@@ -18,7 +18,7 @@
                 background-color: rgb(206, 171, 231);
             }
             h2{
-                background-color: rgb(183, 176, 224);
+                background-color: rgb(49, 17, 230);
                 color: rgb(223, 204, 180);
             }
             p{
@@ -31,20 +31,30 @@
 <h2>Pass phrase by Shruthi Patkur</h2>
 
 <form>
+    <div class="form-group" style="width: 25%;"></div>
     <label for="secret_phrase">Enter the secret phrase</label>
-    <input type ="password" id="secret_phrase" name="secret_phrase" value="Let me in"> <br>
+    <input type ="password" id="secret_phrase" name="secret_phrase" value="Let me in"> 
+    </div><br>
+    <div class="form-group" style="width: 25%;">
     <label for="check">Enter a phrase </label>
     <input type ="text" id="check" name="check" autofocus> <br>
-    <input type="button" onclick="processPhrase()" value="Check the phrase">
-</form>
+    <input type="button" onclick="processPhrase()" value="Check the phrase"><br>
+    </div>
+    </form>
+    <br>
+
 
 <p id="result">Result will be displayed </p>
-
+<br>
+<div class="container">
+    <img src="images/Taco terrier.jpg" class="img-thumbnail" alt="Taco terrier" onclick="newImage();" id="images" style="width: 200; height: 200;">
+</div>
 <script> 
     var correct = 0;
     var wrong = 0;
-         
+    var count = 0;    
     function processPhrase(){
+    console.log("Getting form values")
     secret = document.getElementById("secret_phrase").value
     check = document.getElementById("check").value    
     output = document.getElementById("result")
@@ -52,13 +62,19 @@
     {
         correct = correct+1
         alert("Access Allowed")
-        output.innerHtml = "Correct : "+correct+" Wrong : "+ wrong
-    } 
+    }
     else {
         wrong = wrong+1
         alert("Access Denied")
-        output.innerHTML = "Correct : "+correct+" Wrong : "+ wrong
-    }
+        if(wrong >= 2){
+            document.getElementById("processButton").onclick=function(){alert("Account Locked")}
+                }	
+            }
+            out = document.getElementById("result")
+            out.innerHTML = "Correct Count: " + correct + " ,Wrong Count: " + wrong
+
+
+        
       
 }
 function newImage(){
